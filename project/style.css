@@ -1,0 +1,47 @@
+body {
+  background-color: #fed75a;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: absolute;
+  left: -12vw;
+  top: -16vh;
+}
+
+span {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  position: absolute;
+  left: 800px;
+  top: 150px;
+  transform-origin: bottom center;
+}
+
+@for $i from 1 through 100 {
+  @keyframes spin#{$i} {
+    0% {
+      transform: rotate(($i * -16.25 -360) + deg);
+    }
+    50% {
+      transform: rotate(($i * 0) + deg);
+    }
+    100% {
+      transform: rotate(($i * 16.25 + 360) + deg);
+    }
+  }
+
+  .ch#{$i} {
+    transform: rotate(($i - $i * 1) + deg);
+    animation: spin#{$i} 10s alternate infinite;
+    // animation-delay: 1s;
+    border-top: if($i % 2 == 0, 280px solid black, 280px solid white);
+  }
+}
